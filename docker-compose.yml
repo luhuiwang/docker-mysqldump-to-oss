@@ -1,0 +1,20 @@
+version: "3"
+services:
+  backup:
+    build:
+      context: .
+      dockerfile: Dockerfile.db2oss
+    environment: 
+        - MYSQL_ENV_MYSQL_DATABASE=xxxxx
+        - MYSQL_ENV_MYSQL_USER=xxxxx
+        - MYSQL_ENV_MYSQL_PASSWORD=xxxxx
+        - MYSQL_PORT_3306_TCP_ADDR=xxxxx
+        - MYSQL_PORT_3306_TCP_PORT=xxxxx
+        - OSS_ENTRYPOINTxxxxx
+        - OSS_ACCESSKEY_ID=xxxxx
+        - OSS_ACCESSKEY_SECRET=xxxxx
+        - OSS_BUCKET=xxxxx
+        - PREFIX=xxxxx
+    restart: always
+    volumes:
+        - ./backup.sh:/etc/periodic/daily/backup:ro
